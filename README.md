@@ -46,3 +46,21 @@
         "points": 15,
         "hash": "dGhpc2lzYXNlY3JldA=="
     }
+
+# Class Notes 4/15
+
+- `ionic integrations enable capacitor`
+- `import { Plugins } from '@capacitor/core';`
+- `const { Geolocation } = Plugins;`
+- rearrange code so both markers show up at once
+- https://developers.google.com/maps/documentation/javascript/shapes#circles
+- &libraries=geometry to import
+- https://developers.google.com/maps/documentation/javascript/reference/geometry#spherical.computeDistanceBetween
+- setInterval for checking current position
+- abstract setting the radius
+- setWatcher
+- chrome simulate locations
+
+# Homework for 4/15
+ 
+- Build out Bounty Board & Bounty Detail pages
