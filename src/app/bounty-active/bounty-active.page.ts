@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Plugins } from '@capacitor/core';
+import { Router } from '@angular/router';
 
 // object destructuring (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 const { Geolocation } = Plugins;
@@ -12,7 +13,7 @@ declare var google
   templateUrl: './bounty-active.page.html',
   styleUrls: ['./bounty-active.page.scss'],
 })
-export class BountyActivePage implements OnInit {
+export class BountyActivePage implements OnInit, OnDestroy {
   // this is essentially Angular's version of document.getElementById
   @ViewChild('mapCanvas', { static: true }) mapElement: ElementRef;
 
@@ -31,7 +32,7 @@ export class BountyActivePage implements OnInit {
   private bountyCircle: any;
   private userLocationObject: any;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.loadMap().then( () => {
@@ -145,6 +146,10 @@ export class BountyActivePage implements OnInit {
     });
   }
 
+  claimBounty() {
+    this.router.navigate(['bounty-claim']);
+  }
+
   // TODO - animate the initial map with this method
   // animateMapZoomTo(map, targetZoom) {
   //   var currentZoom = arguments[2] || map.getZoom();
@@ -155,5 +160,11 @@ export class BountyActivePage implements OnInit {
   //   setTimeout(function(){ map.setZoom(currentZoom) }, 80);
   // }
   //}
+
+  
+
+  ngOnDestroy() {
+
+  }
 
 }

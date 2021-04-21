@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-bounty-detail',
@@ -8,20 +8,27 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BountyDetailPage implements OnInit {
 
+  public id: number;
   public bounty: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.displayDetails()
   }
 
   displayDetails() {
-    const bountyId = +this.route.snapshot.paramMap.get('id');
+    this.id = +this.route.snapshot.paramMap.get('id');
 
     const bounties: any[] = JSON.parse(localStorage.getItem('current_bounties'));
 
-    this.bounty = bounties.find(bounty => bounty.id === bountyId)
+    this.bounty = bounties.find(bounty => bounty.id === this.id)
+  }
+
+  startHunt() {
+    localStorage.setItem('current_bounty', JSON.stringify(this.id))
+
+    this.router.navigate(['bounty-active']);
   }
 
 }

@@ -15,10 +15,19 @@ const routes: Routes = [
     loadChildren: () => import('./bounty-active/bounty-active.module').then( m => m.BountyActivePageModule)
   },
   {
-    path: '',
-    redirectTo: 'bounty-board', //TODO change back to bounty-board
+    path: 'bounty-claim',
+    loadChildren: () => import('./bounty-claim/bounty-claim.module').then( m => m.BountyClaimPageModule)
+  },
+  {
+    path: '/',
+    redirectTo: 'bounty-board',
     pathMatch: 'full'
   },
+  {
+    path: '',
+    redirectTo: 'bounty-board',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

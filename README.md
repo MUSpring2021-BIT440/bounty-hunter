@@ -47,3 +47,5 @@
         "points": 15,
         "hash": "dGhpc2lzYXNlY3JldA=="
     }
+
+- https://github.com/cozmo/jsQR
