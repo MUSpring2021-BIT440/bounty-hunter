@@ -1,9 +1,21 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="bounty-board"></ion-back-button>
+    </ion-buttons>
     <ion-title>Bounty Detail</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-text>
+    <p>
+      {{bounty.id}}
+    </p>
+  </ion-text>
+  <ion-text>
+    <p>
+      {{bounty.time}}
+    </p>
+  </ion-text>
 </ion-content>

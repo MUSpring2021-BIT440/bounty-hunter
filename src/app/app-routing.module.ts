@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'bounty-active', //TODO change back to bounty-board
+    redirectTo: 'bounty-board', //TODO change back to bounty-board
     pathMatch: 'full'
   },
 ];

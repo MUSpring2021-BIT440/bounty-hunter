@@ -6,4 +6,13 @@
 
 <ion-content>
 
+  <ion-list *ngFor='let bounty of bounties'>
+    <ion-item routerLink="/bounty-detail/{{bounty.id}}">
+      <ion-label>
+        <h1>{{bounty.hash}}</h1>
+        <ion-text>Time Limit: {{bounty.time}}</ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

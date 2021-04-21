@@ -5,9 +5,9 @@ import { BountyDetailPage } from './bounty-detail.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: BountyDetailPage
-  }
+  },
 ];
 
 @NgModule({
