@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Plugins } from '@capacitor/core';
+import { Router } from '@angular/router';
 
 // object destructuring (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 const { Geolocation } = Plugins;
@@ -31,7 +32,7 @@ export class BountyActivePage implements OnInit {
   private bountyCircle: any;
   private userLocationObject: any;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.loadMap().then( () => {
@@ -143,6 +144,10 @@ export class BountyActivePage implements OnInit {
       center: bountyLocationObject,
       radius
     });
+  }
+
+  goToBountyClaim() {
+    this.router.navigateByUrl('/bounty-claim');
   }
 
   // TODO - animate the initial map with this method
