@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Plugins } from '@capacitor/core';
 import { Router } from '@angular/router';
+import { Loader } from "@googlemaps/js-api-loader"
+import { api_key } from './google_maps_api_key.js'
 
 // object destructuring (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 const { Geolocation } = Plugins;
@@ -20,6 +22,8 @@ export class BountyActivePage implements OnInit {
   public map: any 
 
   public userLocation: any;
+
+  // TODO this should be coming dynamically from the chosen bounty
   public bountyLocation: any = {
     latitude: 41.451861710348645,
     longitude: -96.48415217309466
@@ -35,10 +39,23 @@ export class BountyActivePage implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.loadMap().then( () => {
-      console.log('shit got resolved');
+    
+    const loader = new Loader({
+      apiKey: api_key,
+      version: "weekly",
+      libraries: ['geometry'],
+    });
+
+    loader.load().then( () => {
+
+      this.loadMap()
+
+    }).then( () => {
+
       this.watchLocation();
+
     })
+
   }
 
   loadMap() {
@@ -76,8 +93,8 @@ export class BountyActivePage implements OnInit {
       if(
         !position ||
         !position.coords ||
-        this.userRawPosition.coords.latitude === position.coords.latitude &&
-        this.userRawPosition.coords.longitude === position.coords.longitude
+        (this.userRawPosition.coords.latitude === position.coords.latitude &&
+        this.userRawPosition.coords.longitude === position.coords.longitude)
       ) {
         console.log('Same location, skipping rest of function', this.userRawPosition, position);
         return false;
