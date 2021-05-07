@@ -31,3 +31,5 @@ npm-debug.log*
 /www
 
 src/app/bounty-active/google_maps_api_key.js
+
+a_very_bad_file.txt
